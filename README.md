@@ -1,2 +1,2 @@
-# code-agent-skills
+# cagent-skills-coding
 Open source agent skills for vibe coding.
