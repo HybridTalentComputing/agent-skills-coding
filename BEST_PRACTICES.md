@@ -132,30 +132,58 @@ Think of `SKILL.md` as an onboarding guide for a new team member.
 
 ### Example Structure
 
-```markdown
-# Your Skill Name
+```yaml
+---
+name: excel-data-analysis
+description: >
+  Analyze Excel spreadsheets using pandas and openpyxl.
+  Use when user mentions Excel, .xlsx files, spreadsheets,
+  data analysis, charts, pivot tables, or data visualization
+  from Excel files. Supports reading, manipulation, and export.
+---
+
+# Excel Data Analysis
 
 ## Quick Start
-[Brief 2-3 sentence overview of how to use this Skill]
+This Skill helps you work with Excel files (.xlsx) using Python's pandas and openpyxl libraries. It handles data analysis, visualization, and report generation from spreadsheet data.
 
 ## When to Use This Skill
-[Clear criteria for when this Skill is relevant]
+- User mentions Excel, .xlsx, or spreadsheet files
+- User needs data analysis or visualization from tabular data
+- User requests charts, pivot tables, or statistical analysis
+- User wants to generate Excel reports from data
 
 ## Core Workflow
-1. Step one
-2. Step two
-3. Step three
+1. Load the Excel file using pandas/openpyxl
+2. Analyze the data structure and contents
+3. Perform requested operations (filter, transform, analyze)
+4. Generate visualizations or reports as needed
+5. Export results if requested
 
 ## Examples
-### Example 1: [Scenario]
-[Concrete example with code/output]
+### Example 1: Basic Data Analysis
+User request: "Analyze the sales data in sales.xlsx and show trends"
 
-### Example 2: [Scenario]
-[Concrete example with code/output]
+Your response:
+1. Load the file: `pd.read_excel('sales.xlsx')`
+2. Examine columns and data types
+3. Calculate trends and statistics
+4. Create visualizations
+5. Present findings with specific data points
+
+### Example 2: Creating Reports
+User request: "Generate a monthly summary report from data.xlsx"
+
+Your response:
+1. Load and validate data
+2. Group by month
+3. Calculate summary statistics
+4. Create formatted Excel output with multiple sheets
+5. Save report file
 
 ## Additional Resources
 - See [EXAMPLES.md](EXAMPLES.md) for more use cases
-- See [REFERENCE.md](REFERENCE.md) for detailed API documentation
+- See [REFERENCE.md](REFERENCE.md) for detailed pandas/openpyxl API documentation
 ```
 
 ## 6. When to Use Skills vs. Other Building Blocks
