@@ -1,23 +1,22 @@
-# agent-skills-coding
+# i18n-translation-skill
 
-Open source agent skills for vibe coding.
+An Agent Skill for internationalization (i18n) and translation tasks.
 
 **[English](./README.md)** | **[中文](./README.zh-CN.md)**
 
 ## Overview
 
-This repository serves as a collection and reference point for open source agent skills that extend Claude's capabilities. Agent Skills are filesystem-based modular capabilities that package instructions, metadata, and resources to help Claude perform specialized tasks efficiently.
+This is an Agent Skill that extends Claude's capabilities for handling internationalization and translation workflows. It provides specialized tools and instructions for efficiently managing multi-language content, localization files, and translation processes.
 
-## What are Agent Skills?
+## What is i18n-translation-skill?
 
-Agent Skills teach Claude **how to do** specific tasks through procedural knowledge. Unlike prompts (conversation-level instructions), Skills:
+The i18n-translation-skill teaches Claude **how to handle** internationalization and translation tasks through procedural knowledge. Unlike generic prompts, this Skill:
 
-- Load progressively to optimize token usage
-- Can be reused across conversations and projects
-- Combine to build complex workflows
-- Include executable code and reference materials
-
-**Key Distinction**: Agent Skills (procedural knowledge) vs. MCP (data connectivity). Skills teach Claude what to do with data; MCP connects Claude to data sources.
+- Provides structured workflows for i18n file management
+- Supports multiple translation file formats (JSON, YAML, etc.)
+- Ensures consistency across translations
+- Handles key matching and missing translations
+- Integrates with existing translation workflows
 
 ## Getting Started
 
@@ -26,71 +25,93 @@ Agent Skills teach Claude **how to do** specific tasks through procedural knowle
 - [Official Skills Repository](https://github.com/anthropics/skills) - Reference implementations
 - [Skills Explained](https://claude.com/blog/skills-explained) - How Skills compare to Prompts, Projects, MCP, and Subagents
 
-### Best Practices
+### Installation
 
-📖 **[English Version](./BEST_PRACTICES.md)** | 📖 **[中文版](./BEST_PRACTICES_CN.md)**
+1. Clone this repository to your local skills directory
+2. Ensure the skill is properly configured with metadata
+3. Claude will automatically detect and load the skill when needed
 
-Essential reading for creating effective Agent Skills:
-- Progressive disclosure design (3-level loading architecture)
-- Writing effective descriptions and metadata
-- Structuring your Skill directory
-- Security considerations
-- Platform-specific constraints
-- Common pitfalls to avoid
+## Features
+
+### Translation File Formats
+- **JSON**: Most common format for web applications
+- **YAML**: Human-readable configuration format
+- **Properties**: Java-style property files
+- **Custom formats**: Extensible for project-specific needs
+
+### Core Capabilities
+- Extract translatable strings from source code
+- Generate translation files for multiple languages
+- Synchronize translation keys across language files
+- Detect missing or outdated translations
+- Merge translations from different sources
+- Validate translation file syntax
+
+### When to Use This Skill
+
+> When you need to add, update, or manage internationalization content in your project, or work with translation files across multiple languages.
 
 ## Repository Structure
 
 ```
-agent-skills-coding/
+i18n-translation-skill/
 ├── README.md              # This file
+├── README.zh-CN.md        # Chinese version
 ├── CLAUDE.md              # Guidance for Claude Code
-├── BEST_PRACTICES.md      # Best practices guide (English)
-├── BEST_PRACTICES_CN.md   # 最佳实践指南 (中文)
-└── LICENSE                # Apache License 2.0
+├── LICENSE                # Apache License 2.0
 ```
 
-## Quick Reference
+## Usage Examples
 
-### When to Create a Skill
-> If you find yourself typing the same prompt repeatedly across multiple conversations, it's time to create a Skill.
+### Example 1: Creating Translation Files
 
-### Skill Structure
-```yaml
----
-name: your-skill-name
-description: What this Skill does and when to use it
----
+```json
+// en.json
+{
+  "welcome": "Welcome to our application",
+  "goodbye": "Goodbye!"
+}
 
-# Your Skill Name
-
-## Quick Start
-[Brief overview]
-
-## When to Use This Skill
-[Trigger criteria]
-
-## Core Workflow
-[Step-by-step process]
-
-## Examples
-[Concrete use cases]
+// zh-CN.json
+{
+  "welcome": "欢迎使用我们的应用",
+  "goodbye": "再见！"
+}
 ```
 
-### Key Principles
-1. **Progressive Loading**: Metadata → Instructions → Resources
-2. **Clear Descriptions**: Tell Claude what to do AND when to use it
-3. **Separate Concerns**: Instructions vs. Scripts vs. Resources
-4. **Security First**: Only use Skills from trusted sources
+### Example 2: Extracting Strings
+
+When given source code, the skill can identify translatable strings and create appropriate i18n entries.
+
+### Example 3: Synchronizing Keys
+
+The skill can ensure all language files have matching keys and identify missing translations.
+
+## Best Practices
+
+1. **Keep keys consistent**: Use the same key across all language files
+2. **Use meaningful names**: Choose descriptive keys that reflect content context
+3. **Organize by feature**: Group translations by application features/modules
+4. **Handle plurals**: Use appropriate pluralization rules for each language
+5. **Test with real content**: Verify translations work in actual UI context
 
 ## Contributing
 
-Contributions are welcome! When adding new skills or documentation:
+Contributions are welcome! Areas for improvement:
 
-1. Follow the [Best Practices](./BEST_PRACTICES.md) guide
-2. Ensure your Skill includes proper metadata (name, description)
-3. Provide clear examples and use cases
-4. Test across different platforms if applicable
-5. Document any platform-specific constraints
+- Add support for additional translation file formats
+- Improve extraction accuracy for different programming languages
+- Add more sophisticated pluralization handling
+- Enhance validation and error reporting
+- Support for translation memory systems
+- Integration with translation APIs
+
+When contributing:
+
+1. Follow existing code style and patterns
+2. Add tests for new functionality
+3. Update documentation as needed
+4. Ensure cross-platform compatibility
 
 ## License
 

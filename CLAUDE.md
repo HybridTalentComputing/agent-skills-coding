@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a documentation repository for "agent-skills-coding" - a collection of open source agent skills for vibe coding. It serves as a reference point pointing to official Anthropic agent skills documentation.
+This is the "i18n-translation-skill" repository - an Agent Skill for handling internationalization and translation tasks. This skill extends Claude's capabilities to efficiently manage multi-language content, localization files, and translation processes.
 
 **Key References:**
 - Agent skills documentation: https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview
@@ -12,25 +12,34 @@ This is a documentation repository for "agent-skills-coding" - a collection of o
 
 ## Repository Structure
 
-This is a minimal documentation repository with:
-- `README.md` - Main project documentation with external references
+This is a skill repository with:
+- `README.md` - Main project documentation (English)
+- `README.zh-CN.md` - Chinese version documentation
 - `LICENSE` - Apache License 2.0
-- No build system, dependencies, or source code
+- No build system or dependencies (documentation-only)
+
+## Skill Purpose
+
+The i18n-translation-skill helps Claude:
+1. Extract translatable strings from source code
+2. Generate and manage translation files (JSON, YAML, etc.)
+3. Synchronize translation keys across multiple languages
+4. Detect missing or outdated translations
+5. Validate translation file syntax
 
 ## Development
 
-This repository contains only documentation. There are no:
-- Build commands
-- Test suites
-- Linting tools
-- Package management files
+When working with this repository:
+- This is a documentation/skill definition repository
+- No build commands, test suites, or package management
+- Changes should be made directly to documentation files
+- Follow standard Git workflow for updates
 
-Changes should be made directly to documentation files following standard Git workflow.
+## Skill Usage
 
-## Adding Content
-
-When expanding this repository with agent skill implementations or documentation:
-1. Follow the patterns and structure from the official Anthropic skills repository
-2. Ensure all documentation is in Markdown format
-3. Reference the official documentation for skill implementation guidelines
-4. Maintain the Apache 2.0 licensing for any new contributions
+Claude should use this skill when:
+- Users need to add or update internationalization content
+- Working with translation files across multiple languages
+- Extracting strings for localization
+- Synchronizing translation keys
+- Validating translation file formats
