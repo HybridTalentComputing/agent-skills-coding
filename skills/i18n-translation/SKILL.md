@@ -1,6 +1,16 @@
 ---
 name: i18n-translation
-description: Complete internationalization implementation for web applications. Provides systematic AI-driven workflow to achieve 100% i18n coverage with zero hardcoded strings in SOURCE CODE. Use for adding i18n to new projects, migrating hardcoded strings to i18n, adding new language support, or auditing i18n coverage. CRITICAL: This skill focuses ONLY on source code internationalization (components, views, UI), NOT documentation files (README.md, docs/). Document internationalization is separate and should NOT be considered as i18n implementation. When checking for existing i18n, prioritize src/ directory detection and ignore docs/, README*, and markdown files. Includes extraction patterns, component migration strategies, namespace organization, and validation checklists. Works with React, Vue, Angular, and similar frameworks. No scripts required - all work done by AI following structured methodology.
+description: >
+  Complete internationalization implementation for web applications.
+  Provides systematic AI-driven workflow to achieve 100% i18n coverage with
+  zero hardcoded strings in SOURCE CODE. Use for adding i18n to new projects,
+  migrating hardcoded strings to i18n, adding new language support, or auditing
+  i18n coverage. CRITICAL: This skill focuses ONLY on source code internationalization
+  (components, views, UI), NOT documentation files (README.md, docs/).
+  When checking for existing i18n, prioritize src/ directory detection and ignore
+  docs/, README*, and markdown files. Includes extraction patterns, component
+  migration strategies, namespace organization, and validation checklists.
+  Works with React, Vue, Angular, and similar frameworks.
 ---
 
 # i18n-translation: Full Internationalization Implementation

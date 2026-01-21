@@ -1,6 +1,11 @@
 ---
 name: deepwiki-skill
-description: Generate comprehensive project analysis documentation for code repositories. Use when Claude needs to analyze a codebase and create detailed documentation covering: (1) Project architecture and structure, (2) Component relationships and dependencies, (3) Key functionality and features, (4) Code patterns and design decisions, (5) Setup and usage instructions. Uses DeepResearch multi-turn methodology for thorough analysis. Works with any local or remote repository.
+description: >
+  Generate comprehensive project analysis documentation for code repositories.
+  Use when Claude needs to analyze a codebase and create detailed documentation
+  covering project architecture, component relationships, functionality,
+  code patterns, design decisions, and setup instructions. Uses DeepResearch
+  multi-turn methodology for thorough analysis. Works with any local or remote repository.
 ---
 
 # DeepWiki Project Analysis
