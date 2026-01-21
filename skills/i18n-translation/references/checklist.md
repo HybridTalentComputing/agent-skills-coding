@@ -14,11 +14,18 @@ This document provides comprehensive checklists for each phase of i18n implement
 
 ### Existing i18n Setup
 
-- [ ] Search for existing i18n libraries
-- [ ] Check for existing translation files
-- [ ] Document current i18n setup (if any)
-- [ ] Note supported languages
+- [ ] Search for existing i18n libraries **in SOURCE CODE only**
+  - [ ] Check `src/` directory for i18n imports
+  - [ ] Check `src/` directory for i18n usage (`useTranslation()`, `t()`)
+  - [ ] Check `src/` for translation files (`locales/`, `i18n/`)
+- [ ] **IGNORE documentation files** (do NOT check these):
+  - [ ] Do NOT count `README*.md` files as i18n
+  - [ ] Do NOT count `docs/` folder as i18n
+  - [ ] Do NOT count markdown files as i18n
+- [ ] Document current i18n setup in SOURCE CODE (if any)
+- [ ] Note supported languages in source code
 - [ ] Identify translation file format (JSON/YAML/etc.)
+- [ ] **Verify:** Documentation i18n ≠ Code i18n
 
 ### Component Inventory
 
@@ -452,6 +459,11 @@ Randomly select 10-20 components and verify:
 - Missing components in inventory
 - Incorrect framework identification
 - Incomplete namespace planning
+- **⚠️ CRITICAL:** Mistaking documentation i18n for code i18n
+  - `README*.md` files do NOT count as i18n implementation
+  - `docs/` folder should be completely ignored
+  - Only check `src/`, `app/`, `components/`, `views/` directories
+  - Multi-language documentation ≠ application i18n
 
 **Phase 2 - Watch for:**
 - Missed strings in components

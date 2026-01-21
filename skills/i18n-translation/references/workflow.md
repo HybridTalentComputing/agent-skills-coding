@@ -56,27 +56,67 @@ Read: tsconfig.json
 }
 ```
 
-#### 1.2 Check for Existing i18n
+#### 1.2 Check for Existing i18n in SOURCE CODE
 
-**Search for existing i18n implementations:**
+**⚠️ CRITICAL: Check ONLY source code directories. Ignore documentation.**
+
+**Search for existing i18n implementations in SOURCE CODE:**
 
 ```
-Grep: "i18n|i18next|react-i18next|vue-i18n" (case insensitive)
-Glob: "**/locales/**"
-Glob: "**/i18n/**"
-Glob: "**/lang/**"
+# ✅ CORRECT - Check source code directories only
+Grep: "i18n|i18next|react-i18next|vue-i18n|useTranslation" in src/
+Glob: "src/**/locales/**"
+Glob: "src/**/i18n/**"
+Glob: "src/**/lang/**"
+
+# ❌ WRONG - Do NOT check documentation
+# Do NOT search: docs/, README*.md, *.md files
+# Documentation i18n is separate and does NOT count
 ```
 
-**If i18n exists:**
+**Detection Priority:**
+
+1. **FIRST - Check component files for i18n usage:**
+   ```
+   Grep: "from ['\"]react-i18next['\"]|from ['\"]vue-i18n['\"]" in src/
+   Grep: "useTranslation|t\(['\"]" in src/
+   ```
+
+2. **SECOND - Check for i18n configuration in source directories:**
+   ```
+   Glob: "src/**/i18n/**/*.{ts,js,json}"
+   Glob: "src/**/locales/**/*.json"
+   ```
+
+3. **IGNORE - Do NOT check these:**
+   - Documentation files: `README*.md`, `docs/**`
+   - Markdown files: `*.md`
+   - Documentation-specific i18n systems
+   - Multi-language documentation sites
+
+**If i18n exists in SOURCE CODE:**
 - Note the library used (i18next, vue-i18n, etc.)
 - Check supported languages
 - Identify the translation file structure
-- Document any existing translations
+- Document any existing translations in components
+- Verify components actually use `t()` function calls
 
-**If no i18n exists:**
+**If no i18n exists in SOURCE CODE:**
 - Plan to install i18next (React) or appropriate library
 - Design translation file structure
 - Choose base language (usually English)
+- IGNORE any documentation i18n - it doesn't count
+
+**Common Mistakes to Avoid:**
+
+❌ **Wrong:** "Project has README.zh-CN.md, so i18n exists"
+✅ **Correct:** "Check src/ for i18n library usage, ignore README files"
+
+❌ **Wrong:** "Found i18n in docs/ folder, project has i18n"
+✅ **Correct:** "Check only src/ directory, docs/ is irrelevant"
+
+❌ **Wrong:** "Any i18n reference counts as implementation"
+✅ **Correct:** "Only i18n in source code (components, views) counts"
 
 #### 1.3 Analyze Component Structure
 
@@ -118,7 +158,8 @@ Glob: "src/pages/**/*.{tsx,jsx,vue}"
 
 - [ ] Framework identified (React/Vue/etc.)
 - [ ] Build tool identified
-- [ ] Existing i18n checked and documented
+- [ ] Existing i18n checked in SOURCE CODE only (not documentation)
+- [ ] Confirmed: Documentation i18n (README, docs/) ignored
 - [ ] Component inventory created
 - [ ] Translation file structure planned
 

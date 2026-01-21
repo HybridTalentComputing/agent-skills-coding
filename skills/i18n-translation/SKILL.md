@@ -1,6 +1,6 @@
 ---
 name: i18n-translation
-description: Complete internationalization implementation for web applications. Provides systematic AI-driven workflow to achieve 100% i18n coverage with zero hardcoded strings. Use for adding i18n to new projects, migrating hardcoded strings to i18n, adding new language support, or auditing i18n coverage. Includes extraction patterns, component migration strategies, namespace organization, and validation checklists. Works with React, Vue, Angular, and similar frameworks. No scripts required - all work done by AI following structured methodology.
+description: Complete internationalization implementation for web applications. Provides systematic AI-driven workflow to achieve 100% i18n coverage with zero hardcoded strings in SOURCE CODE. Use for adding i18n to new projects, migrating hardcoded strings to i18n, adding new language support, or auditing i18n coverage. CRITICAL: This skill focuses ONLY on source code internationalization (components, views, UI), NOT documentation files (README.md, docs/). Document internationalization is separate and should NOT be considered as i18n implementation. When checking for existing i18n, prioritize src/ directory detection and ignore docs/, README*, and markdown files. Includes extraction patterns, component migration strategies, namespace organization, and validation checklists. Works with React, Vue, Angular, and similar frameworks. No scripts required - all work done by AI following structured methodology.
 ---
 
 # i18n-translation: Full Internationalization Implementation
@@ -21,6 +21,76 @@ For immediate i18n implementation:
 **⚠️ Important:** For projects with > 1000 strings, you MUST split translation files by namespace. See [modular-files.md](references/modular-files.md) for complete guidance.
 
 **Expected outcome:** 100% of UI text uses i18n system, application works flawlessly in all supported languages.
+
+---
+
+## ⚠️ Critical: Code vs Documentation Internationalization
+
+**This skill ONLY handles source code internationalization.**
+
+### What This Skill Does (Source Code i18n)
+
+✅ **IN SCOPE - Components and Source Code:**
+- UI components in `src/`, `app/`, `components/`, `views/`, `pages/`
+- React/Vue/Angular/Svelte components (.tsx, .jsx, .vue, .ts, .js)
+- User-facing text in application code
+- Translation files for the application (en.json, zh.json, etc.)
+- i18n library setup (i18next, vue-i18n, etc.)
+
+### What This Skill Does NOT Handle (Documentation i18n)
+
+❌ **OUT OF SCOPE - Documentation Files:**
+- README.md, README.zh-CN.md, README.en.md
+- Documentation in `docs/` folder
+- Markdown files (.md)
+- Documentation-specific translation systems
+- Multi-language documentation sites
+
+### Priority Rule
+
+**When detecting existing i18n implementation:**
+
+1. **FIRST PRIORITY:** Check source code directories (`src/`, `app/`, `components/`, `views/`)
+   - Look for i18n library imports in component files
+   - Check for `useTranslation()`, `t()` function calls
+   - Look for translation files in source directories
+
+2. **SECOND PRIORITY:** Ignore documentation files
+   - `README*.md` files do NOT count as i18n implementation
+   - `docs/` folder should be completely ignored
+   - Multi-language documentation ≠ application i18n
+
+### Detection Commands
+
+**✅ CORRECT - Check source code only:**
+```bash
+# Check for i18n in source code
+Grep: "i18n|useTranslation|i18next" in src/ directory
+Glob: "src/**/locales/**/*.json"
+Glob: "src/**/i18n/**"
+
+# Check component files
+Grep: "from [\"']react-i18next[\"']|from [\"']vue-i18n[\"']" in src/
+```
+
+**❌ WRONG - Don't check documentation:**
+```bash
+# These will detect documentation i18n, which is wrong
+Glob: "**/README*.md"
+Glob: "docs/**"
+Grep: "i18n" in all files (includes docs)
+```
+
+### Common Misconceptions
+
+**Myth:** "My project has README.md and README.zh-CN.md, so it has i18n."
+**Fact:** No, documentation internationalization is separate from code i18n.
+
+**Myth:** "I have i18n in my docs/ folder, so I can skip i18n setup."
+**Fact:** Documentation i18n doesn't help your UI components translate.
+
+**Myth:** "Finding i18n references anywhere means the project is internationalized."
+**Fact:** Only source code i18n counts. Documentation must be ignored.
 
 ---
 
@@ -103,10 +173,18 @@ Before touching any code:
    Glob: "src/views/**/*.{tsx,jsx,vue}"
    ```
 
-3. **Check existing i18n:**
+3. **Check existing i18n in SOURCE CODE only:**
    ```bash
-   Grep: "i18n|i18next|vue-i18n" (case insensitive)
+   # ✅ CORRECT - Check source code directories only
+   Grep: "i18n|i18next|vue-i18n|useTranslation" in src/
+   Glob: "src/**/locales/**"
+   Glob: "src/**/i18n/**"
+
+   # ❌ WRONG - Don't check documentation
+   # Do NOT search in: docs/, README*.md, .md files
    ```
+
+   **CRITICAL:** Only check source code directories. Ignore documentation files completely.
 
 4. **Create component inventory:**
    - List all components by category (layout, features, common, utility)
